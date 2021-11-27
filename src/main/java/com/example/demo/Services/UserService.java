@@ -42,9 +42,9 @@ public class UserService {
         String name = "NO DEFINIDO";
 
         if (user == null) {
-            validacionFallida.setName(name);
-            validacionFallida.setEmail(email);
-            validacionFallida.setPassword(password);
+            // validacionFallida.setName(name);
+            // validacionFallida.setEmail(email);
+            // validacionFallida.setPassword(password);
 
             return validacionFallida;
         } else {
