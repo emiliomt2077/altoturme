@@ -40,8 +40,10 @@ public class ClotheService {
         if (existeClothe.isPresent()) 
             return clothe;
         
-        return clotheRepository.save(clothe);
+        clotheRepository.save(clothe);
+        return null;
     }
+
     
     public Clothe update(Clothe clothe) {
         
@@ -56,7 +58,8 @@ public class ClotheService {
         //existeClothe.get().setNombre(clothe.getNombre());
         //existeClothe.get().setCorreo(clothe.getCorreo());
         //existeClothe.get().setEdad(clothe.getEdad());
-        return clotheRepository.save(clothe);
+        clotheRepository.save(clothe);
+        return null;
     }
     
     public void delete(String reference) {

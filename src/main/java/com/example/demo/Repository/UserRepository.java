@@ -42,5 +42,9 @@ public class UserRepository {
     public void delete(Integer id) {
         userCRUD.deleteById(id);
     }
+
+    public User getEmailandPassword(String email, String password) {
+        return userCRUD.findByEmailAndPassword(email, password);
+    }
     
 }

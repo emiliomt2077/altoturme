@@ -36,6 +36,22 @@ public class UserService {
         return userRepository.getEmail(email).isPresent();
     }
     
+    public User correctPassword(String email, String password) {
+        User user = userRepository.getEmailandPassword(email, password);
+        User validacionFallida = new User();
+        String name = "NO DEFINIDO";
+
+        if (user == null) {
+            validacionFallida.setName(name);
+            validacionFallida.setEmail(email);
+            validacionFallida.setPassword(password);
+
+            return validacionFallida;
+        } else {
+            return user;
+        }
+    }
+
     
     public Optional<User> save(User user) {
         
@@ -64,7 +80,8 @@ public class UserService {
         //existeUser.get().setNombre(user.getNombre());
         //existeUser.get().setCorreo(user.getCorreo());
         //existeUser.get().setEdad(user.getEdad());
-        return userRepository.save(user);
+        userRepository.save(user);
+        return null;
     }
     
     public void delete(Integer id) {

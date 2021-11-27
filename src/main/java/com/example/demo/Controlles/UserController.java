@@ -57,10 +57,10 @@ public class UserController {
         return userService.emailExist(email);
     }
     
-    //@GetMapping("/{email}/{password}")
-    //public User emailPassword(@PathVariable("email") String email, @PathVariable("password") String password) {
-        //return userService.correctPassword(email, password);
-    //}
+    @GetMapping("/{email}/{password}")
+    public User emailPassword(@PathVariable("email") String email, @PathVariable("password") String password) {
+        return userService.correctPassword(email, password);
+    }
     
 
     @PutMapping("/update")

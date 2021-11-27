@@ -17,5 +17,7 @@ import org.springframework.data.mongodb.repository.Query;
 public interface UserCRUD extends MongoRepository<User, Integer>{
     @Query
     public Optional<User> findByEmail(String email);   
+
+    public User findByEmailAndPassword(String email, String password);
 }
 
