@@ -52,7 +52,7 @@ public class ClotheController {
     @PutMapping("/update")
     public ResponseEntity<Clothe> update(@RequestBody Clothe clothe) {
         Clothe p = clotheService.update(clothe);
-        return new ResponseEntity(p, HttpStatus.ACCEPTED);
+        return new ResponseEntity(p, HttpStatus.CREATED);
     }
 
 
