@@ -54,10 +54,23 @@ public class ClotheService {
         
         if (existeClothe.isPresent() == false)
             return clothe;
+        
+        if (clothe.getReference() == null)
+            clothe.setReference(existeClothe.get().getReference());
+        if (clothe.getCategory() == null)
+            clothe.setCategory(existeClothe.get().getCategory());
+        if (clothe.getSize() == null)
+            clothe.setSize(existeClothe.get().getSize());
+        if (clothe.getDescription() == null)
+            clothe.setDescription(existeClothe.get().getDescription());
+        if (clothe.getPrice() <= 0)
+            clothe.setPrice(existeClothe.get().getPrice());
+        if (clothe.getQuantity() == null)
+            clothe.setQuantity(existeClothe.get().getQuantity());
+        if (clothe.getPhotography() == null)
+            clothe.setPhotography(existeClothe.get().getPhotography());
 
-        //existeClothe.get().setNombre(clothe.getNombre());
-        //existeClothe.get().setCorreo(clothe.getCorreo());
-        //existeClothe.get().setEdad(clothe.getEdad());
+    
         clotheRepository.save(clothe);
         return null;
     }
