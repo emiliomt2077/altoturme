@@ -9,6 +9,7 @@ import com.example.demo.Models.Order;
 import com.example.demo.Repository.CRUD.OrderCRUD;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,26 +18,27 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class OrderRepository {
-    private OrderCRUD userCRUD ;
+    @Autowired
+    private OrderCRUD orderCRUD ;
     
     public List<Order> getAll() {
-        return userCRUD.findAll();
+        return orderCRUD.findAll();
     }
     
     public List<Order> getAllByZone(String zone) {
-        return userCRUD.findAllBySalesManZone(zone);
+        return orderCRUD.findAllBySalesManZone(zone);
     }
     
     public Optional<Order> getById(Integer id) {
-        return userCRUD.findById(id);
+        return orderCRUD.findById(id);
     }
     
-    public Order save(Order user) {
-        return userCRUD.save(user);
+    public Order save(Order order) {
+        return orderCRUD.save(order);
     }
     
     public void delete(Integer id) {
-        userCRUD.deleteById(id);
+        orderCRUD.deleteById(id);
     }
     
 }
