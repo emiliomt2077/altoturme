@@ -5,8 +5,8 @@
  */
 package com.example.demo.Controlles;
 
-import com.example.demo.Models.User;
-import com.example.demo.Services.UserService;
+import com.example.demo.Models.Order;
+import com.example.demo.Services.OrderService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,52 +27,44 @@ import org.springframework.web.bind.annotation.RestController;
  * @author unPandicornio
  */
 
-
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/order")
 @CrossOrigin(origins = "*")
-public class UserController {
+public class OrderController {
 
     @Autowired
-    private UserService userService;
+    private OrderService orderService;
 
     @GetMapping("/all")
-    public List<User> getAll() {
-        return userService.getAll();
+    public List<Order> getAll() {
+        return orderService.getAll();
     }
+    
+    @GetMapping("/zona/{zone}")
+    public List<Order> getAllByZone(@PathVariable String zone){
+        return orderService.getAllByZone(zone);
+    }
+    
 
     @GetMapping("/{id}")
-    public User getById(@PathVariable Integer id) {
-        return userService.getById(id);
+    public Order getById(@PathVariable Integer id) {
+        return orderService.getById(id);
     }
         
     @PostMapping("/new")
-    public ResponseEntity<User> save(@RequestBody User user) {
-        Optional<User> p = userService.save(user);
+    public ResponseEntity<Order> save(@RequestBody Order order) {
+        Optional<Order> p = orderService.save(order);
         return new ResponseEntity(p, HttpStatus.CREATED);
     }
     
-    @GetMapping("/emailexist/{email}")
-    public boolean emailExist (@PathVariable String email) {
-        return userService.emailExist(email);
-    }
-    
-    @GetMapping("/{email}/{password}")
-    public User emailPassword(@PathVariable("email") String email, @PathVariable("password") String password) {
-        return userService.correctPassword(email, password);
-    }
-    
-
     @PutMapping("/update")
-    public ResponseEntity<User> update(@RequestBody User user) {
-        User p = userService.update(user);
+    public ResponseEntity<Order> update(@RequestBody Order order) {
+        Order p = orderService.update(order);
         return new ResponseEntity(p, HttpStatus.CREATED);
     }
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        userService.delete(id);
+        orderService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
