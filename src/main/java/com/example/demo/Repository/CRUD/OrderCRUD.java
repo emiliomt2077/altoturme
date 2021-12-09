@@ -6,6 +6,7 @@
 package com.example.demo.Repository.CRUD;
 
 import com.example.demo.Models.Order;
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -15,4 +16,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface OrderCRUD  extends MongoRepository<Order, Integer> {
     public List<Order> findAllBySalesManZone(String zone);
+    public List<Order> findAllBySalesManId(Integer id);
+    public List<Order> findAllByRegisterDayAndSalesManId(Date registerDay, Integer id);
+    public List<Order> findAllByStatusAndSalesManId(String status, Integer id);
 }

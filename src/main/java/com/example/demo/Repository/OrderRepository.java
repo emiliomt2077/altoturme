@@ -7,6 +7,7 @@ package com.example.demo.Repository;
 
 import com.example.demo.Models.Order;
 import com.example.demo.Repository.CRUD.OrderCRUD;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,18 @@ public class OrderRepository {
     
     public List<Order> getAllByZone(String zone) {
         return orderCRUD.findAllBySalesManZone(zone);
+    }
+    
+    public List<Order> getAllBySalesman(Integer id) {
+        return orderCRUD.findAllBySalesManId(id);
+    } 
+    
+    public List<Order> getAllByRegisterDayAndSalesmanId(Date registerDay, Integer id) {
+        return orderCRUD.findAllByRegisterDayAndSalesManId(registerDay, id);
+    }
+    
+    public List<Order> getAllByStatusAndSalesmanId(String status, Integer id) {
+        return orderCRUD.findAllByStatusAndSalesManId(status, id);
     }
     
     public Optional<Order> getById(Integer id) {

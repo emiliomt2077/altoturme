@@ -7,6 +7,8 @@ package com.example.demo.Controlles;
 
 import com.example.demo.Models.Order;
 import com.example.demo.Services.OrderService;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,20 @@ public class OrderController {
         return orderService.getAllByZone(zone);
     }
     
+    @GetMapping("/salesman/{id}")
+    public List<Order> getAllBySalesman(@PathVariable Integer id){
+        return orderService.getAllBySalesman(id);
+    }
+    
+    @GetMapping("/date/{date}/{id}")
+    public List<Order> getAllByRegisterDayAndSalesmanId(@PathVariable String registerDay, @PathVariable Integer id) throws ParseException {
+        return orderService.getAllByRegisterDayAndSalesmanId(registerDay, id);
+    }
+    
+    @GetMapping("/state/{status}/{id}")
+    public List<Order> getAllByStatusAndSalesmanId(@PathVariable String status,@PathVariable Integer id) {
+        return orderService.getAllByStatusAndSalesmanId(status, id);
+    }
 
     @GetMapping("/{id}")
     public Order getById(@PathVariable Integer id) {

@@ -7,6 +7,9 @@ package com.example.demo.Services;
 
 import com.example.demo.Models.Order;
 import com.example.demo.Repository.OrderRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +33,22 @@ public class OrderService {
     public List<Order> getAllByZone(String zone){
         return orderRepository.getAllByZone(zone);
     }
-            
+    
+    
+    public List<Order> getAllBySalesman(Integer id){
+        return orderRepository.getAllBySalesman(id);
+    }
+    
+    public List<Order> getAllByRegisterDayAndSalesmanId(String registerDay, Integer id) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(registerDay);
+        return orderRepository.getAllByRegisterDayAndSalesmanId(date, id);
+    }
+    
+    public List<Order> getAllByStatusAndSalesmanId(String status, Integer id) {
+        return orderRepository.getAllByStatusAndSalesmanId(status, id);
+    }
+    
     public Order getById(Integer id) {
         return orderRepository.getById(id).orElse(null);
     }
