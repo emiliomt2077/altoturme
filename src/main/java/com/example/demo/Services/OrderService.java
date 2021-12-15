@@ -39,9 +39,20 @@ public class OrderService {
         return orderRepository.getAllBySalesman(id);
     }
     
-    public List<Order> getAllByRegisterDayAndSalesmanId(String registerDay, Integer id) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = sdf.parse(registerDay);
+    //public List<Order> getAllByRegisterDayAndSalesmanId(String registerDay, Integer id) throws ParseException {
+    //    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    //    Date date = sdf.parse(registerDay);
+    //    return orderRepository.getAllByRegisterDayAndSalesmanId(date, id);
+    //}
+    
+     public List<Order> getAllByRegisterDayAndSalesmanId(String registerDay, Integer id) {
+        SimpleDateFormat parser = new  SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        try {
+            date = parser.parse(registerDay);
+            
+        } catch (Exception e) {
+        }
         return orderRepository.getAllByRegisterDayAndSalesmanId(date, id);
     }
     
