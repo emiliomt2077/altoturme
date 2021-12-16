@@ -32,7 +32,7 @@ public class UserService {
         return userRepository.getById(id).orElse(null);
     }
     
-    public List<User> getByBirthday(Integer monthBirthtDay) {
+    public List<User> getByBirthday(String monthBirthtDay) {
         return userRepository.getByBirthday(monthBirthtDay);
     }
     
