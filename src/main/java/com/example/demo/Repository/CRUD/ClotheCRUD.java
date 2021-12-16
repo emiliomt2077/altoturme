@@ -6,6 +6,7 @@
 package com.example.demo.Repository.CRUD;
 
 import com.example.demo.Models.Clothe;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -16,7 +17,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface ClotheCRUD extends MongoRepository<Clothe, Integer>{
     
     public Optional<Clothe> findByReference(String reference);
-
+    public List<Clothe> findByPriceLessThanEqual(Integer price);
+    public List<Clothe> findByDescriptionContainingIgnoreCase(String word);
     public void deleteByReference(String reference);
     
 }

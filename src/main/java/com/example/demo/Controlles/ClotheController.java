@@ -37,7 +37,17 @@ public class ClotheController {
     public List<Clothe> getAll() {
         return clotheService.getAll();
     }
-
+    
+    @GetMapping("/price/{price}")
+    public List<Clothe> getByPrice(@PathVariable Integer price){
+        return clotheService.getByPrice(price);
+    }
+    
+    @GetMapping("/description/{description}")
+    public List<Clothe> getByClotheContaining(@PathVariable String description){
+        return clotheService.getByClotheContaining(description);
+    }
+    
     //@GetMapping("/{reference}")
     //public Clothe getByReference(@PathVariable String reference) {
     //    return clotheService.getByReference(id);

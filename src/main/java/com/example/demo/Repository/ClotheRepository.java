@@ -30,6 +30,13 @@ public class ClotheRepository {
         return clotheCRUD.findByReference(reference);
     }
     
+    public List<Clothe> getByPrice(Integer price) {
+        return clotheCRUD.findByPriceLessThanEqual(price);
+    }
+    public List<Clothe> getByClotheContaining(String word) {
+        return clotheCRUD.findByDescriptionContainingIgnoreCase(word);
+    }
+    
     public Clothe save(Clothe clothe) {
         return clotheCRUD.save(clothe);
     }

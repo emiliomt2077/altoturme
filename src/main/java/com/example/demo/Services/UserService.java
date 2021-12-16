@@ -32,6 +32,10 @@ public class UserService {
         return userRepository.getById(id).orElse(null);
     }
     
+    public List<User> getByBirthday(Integer monthBirthtDay) {
+        return userRepository.getByBirthday(monthBirthtDay);
+    }
+    
     public boolean emailExist(String email) {        
         return userRepository.getEmail(email).isPresent();
     }

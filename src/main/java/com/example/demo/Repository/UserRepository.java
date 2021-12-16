@@ -35,6 +35,10 @@ public class UserRepository {
         return userCRUD.findByEmail(email);
     }
     
+    public List<User> getByBirthday(Integer monthBirthtDay) {
+        return userCRUD.findAllByMonthBirthtDay(monthBirthtDay);
+    }
+    
     public User save(User user) {
         return userCRUD.save(user);
     }

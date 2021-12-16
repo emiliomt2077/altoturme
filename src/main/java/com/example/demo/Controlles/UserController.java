@@ -45,6 +45,11 @@ public class UserController {
     public User getById(@PathVariable Integer id) {
         return userService.getById(id);
     }
+    
+    @GetMapping("/birthday/{monthBirthtDay}")
+    public List<User> getByBirthday(@PathVariable Integer monthBirthtDay){
+        return userService.getByBirthday(monthBirthtDay);
+    }
         
     @PostMapping("/new")
     public ResponseEntity<User> save(@RequestBody User user) {

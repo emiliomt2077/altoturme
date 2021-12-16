@@ -30,6 +30,13 @@ public class ClotheService {
         return clotheRepository.getByReference(reference).orElse(null);
     }
     
+    public List<Clothe> getByPrice(Integer price) {
+        return clotheRepository.getByPrice(price);
+    }
+    public List<Clothe> getByClotheContaining(String word) {
+        return clotheRepository.getByClotheContaining(word);
+    }
+    
     public Clothe save(Clothe clothe) {
         
         if (clothe.getReference() == null) 

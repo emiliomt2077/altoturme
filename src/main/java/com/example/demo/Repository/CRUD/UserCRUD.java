@@ -6,6 +6,7 @@
 package com.example.demo.Repository.CRUD;
 
 import com.example.demo.Models.User;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -17,7 +18,7 @@ import org.springframework.data.mongodb.repository.Query;
 public interface UserCRUD extends MongoRepository<User, Integer>{
     @Query
     public Optional<User> findByEmail(String email);   
-
+    public List<User> findAllByMonthBirthtDay(Integer monthBirthtDay);
     public User findByEmailAndPassword(String email, String password);
 }
 
