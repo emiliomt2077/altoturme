@@ -36,7 +36,7 @@ public class UserRepository {
     }
     
     public List<User> getByBirthday(Integer monthBirthtDay) {
-        return userCRUD.findAllByMonthBirthtDay(monthBirthtDay);
+        return userCRUD.findByMonthBirthtDay(monthBirthtDay);
     }
     
     public User save(User user) {
